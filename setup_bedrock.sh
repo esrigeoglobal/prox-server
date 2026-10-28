@@ -3,8 +3,8 @@ set -euo pipefail
 
 # ── Minecraft Bedrock Server Installer ── v3.0 ──
 
-dnf update
-dnf install -y unzip wget screen curl ca-certificates jq
+apt update
+apt install -y unzip wget screen curl ca-certificates jq
 
 if ! id -u minecraft >/dev/null 2>&1; then useradd -r -m -s /bin/bash minecraft; fi
 mkdir -p /opt/minecraft-bedrock
@@ -22,7 +22,7 @@ if [[ -z "${LATEST_URL:-}" ]]; then
 fi
 
 if [[ -z "${LATEST_URL:-}" ]]; then
-  printf "%s:Could not find Bedrock server URL">&2, ${ERROR}
+  echo "ERROR: Could not find Bedrock server URL" >&2
   exit 1
 fi
 
