@@ -6,8 +6,8 @@ set -euo pipefail
 
 USER_AGENT="minecraft-server-Proxmox/3.0 (https://github.com/TimInTech/minecraft-server-Proxmox)"
 
-apt update
-apt install -y screen wget curl jq unzip ca-certificates gnupg
+dnf update
+dnf install -y screen wget curl jq unzip ca-certificates gnupg
 
 ensure_java() {
   if command -v java >/dev/null 2>&1; then
