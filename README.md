@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Minecraft Server on Proxmox – Version 3.0 (updated 2026-06-08)
 
 > 🇩🇪 Deutsche Version: [README.de.md](README.de.md)
@@ -340,12 +341,9 @@ For safe simulation workflow details, see **[SIMULATION.md](SIMULATION.md)**.
 - Proxmox Wiki: <https://pve.proxmox.com/wiki/Main_Page>
 - Mojang Bedrock Server: <https://www.minecraft.net/en-us/download/server/bedrock>
 
-## ⭐ Star History
-
-If this project saved you time, a ⭐ helps others discover it and motivates continued maintenance.
+## ⭐ Star History this project saved you time, a ⭐ helps others discover it and motivates continued maintenance.
 
 [![Star History Chart](https://api.star-history.com/svg?repos=TimInTech/minecraft-server-Proxmox&type=Date)](https://star-history.com/#TimInTech/minecraft-server-Proxmox&Date)
 
 ## License
 
-[MIT](LICENSE)
