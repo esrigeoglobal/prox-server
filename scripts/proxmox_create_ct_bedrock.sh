@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 set -euo pipefail
 
 # Generate a random 16-char alphanumeric password for the CT root account.
@@ -11,7 +11,7 @@ MEM="${MEM:-2048}"
 
 pveam update
 TPL=$(pveam available | awk '/debian-12-standard_.*_amd64\.tar\.(zst|gz)$/ {n=$2} END{print n}')
-[ -z "$TPL" ] && { printf "No Debian-12 template found\n"; exit 1; }
+[ -z "$TPL" ] && { echo "No Debian-12 template found"; exit 1; }
 pveam download "$STORE" "$TPL"
 
 pct create "$CTID" "${STORE}:vztmpl/${TPL}" \
@@ -22,13 +22,13 @@ pct create "$CTID" "${STORE}:vztmpl/${TPL}" \
 
 pct start "$CTID"
 
-pct exec "$CTID" -- zsh -lc '
-  dnf -y install wget curl
+pct exec "$CTID" -- bash -lc '
+  apt update && apt -y install wget curl
   wget -qO /root/setup_bedrock.sh https://raw.githubusercontent.com/TimInTech/minecraft-server-Proxmox/main/setup_bedrock.sh
-  zsh /root/setup_bedrock.sh
+  bash /root/setup_bedrock.sh
 '
 
-printf "CT %s ready.\n" "$CTID"
-printf "⚠️  Root password for CT %s: %s\n" "$CTID" "$CT_PASSWORD"
-printf "     Change it immediately after first login: pct exec %s -- passwd root\n" "$CTID"
-printf "     Attach: pct enter %s\n" "$CTID"
+echo "CT $CTID ready."
+echo "⚠️  Root password for CT $CTID: ${CT_PASSWORD}"
+echo "     Change it immediately after first login: pct exec $CTID -- passwd root"
+echo "     Attach: pct enter $CTID"
